@@ -1,0 +1,36 @@
+public long getItem(int arg0){
+	return list.get(arg0);
+}
+
+public View getView(int arg0, View arg1, ViewGroup arg2){
+	ItemView itv = null;
+	if(arg1==null){
+		arg1=inflater.inflate(R.layout.itemlayout, null);
+		itv=new ItemView();
+		itv.iv=arg1.findViewById(R.id.imageView1);
+		itv.name=arg1.findViewById(R.id.textView1);
+		itv.yearlevel=arg1.findViewById(R.id.textView2);
+		arg1.setTag(itv);
+	}
+	else itv=arg.getTag();
+	
+	itv.iv.setImageResource(list.get(arg0).getImage());
+	itv.name.setText(list.get(arg0).getName());
+	itv.yearlevel.setText(list.get(arg0).getDate());
+	return arg1; 
+}
+
+static class ItemView{
+	ImageView iv;
+	TextView name, date;
+}
+
+ListView lv;
+ArrayList<ItemClass> list = new ArrayList<ItemClass>();
+ItemAdapter adapter;
+
+
+list.add(newItemClass(,,,));
+adapter = new ItemAdapter(this,list);
+this.lv=this.findViewById(R.id.listView1);
+this.lv.setAdapter(adapter);
